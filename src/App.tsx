@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Navbar } from './components/Navbar';
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import { TodosPage } from './components/pages/TodosPage';
+import { AboutPage } from './components/pages/AboutPage';
+import { Piton } from './components/pages/Piton';
+import { GalleryTest } from './print/GalleryTest';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <BrowserRouter>
+    <Navbar />
+    <div className='container'>
+      <switch>
+        <Route component={TodosPage} path='/' />
+          <Route component={AboutPage} path='/about' />
+          <Route component={Piton} path='/piton' />
+          {/* <Route component = {GalleryTest} path='/' exact/> */}
+      </switch>
     </div>
+    
+  </BrowserRouter>
   );
 }
 
